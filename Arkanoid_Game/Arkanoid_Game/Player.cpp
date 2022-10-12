@@ -4,7 +4,6 @@ Player::Player()
 {
 	totalLives = 4;
 	totalScore = 0;
-	platformSpeed = platform.getSpeed();
 	up = true;
 	start = false;
 	level = new Level_1;
@@ -62,9 +61,9 @@ void Player::changeBall(BallType bt)
 void Player::MovePlatformUp()
 {
 	int y = platform.getY();
-	if (y - platformSpeed >= platform.maxY)
+	if (y - platform.getSpeed() >= platform.maxY)
 	{
-		platform.setY(y - platformSpeed);
+		platform.setY(y - platform.getSpeed());
 	}
 
 	if (!start)
@@ -77,9 +76,9 @@ void Player::MovePlatformUp()
 void Player::MovePlatformDown()
 {
 	int y = platform.getY();
-	if (y + platformSpeed <= platform.minY)
+	if (y + platform.getSpeed() <= platform.minY)
 	{
-		platform.setY(y + platformSpeed);
+		platform.setY(y + platform.getSpeed());
 	}
 
 	if (!start)
@@ -92,9 +91,9 @@ void Player::MovePlatformDown()
 void Player::MovePlatformLeft()
 {
 	int x = platform.getX();
-	if (x - platformSpeed >= platform.minX)
+	if (x - platform.getSpeed() >= platform.minX)
 	{
-		platform.setX(x - platformSpeed);
+		platform.setX(x - platform.getSpeed());
 	}
 
 	if (!start)
@@ -107,9 +106,9 @@ void Player::MovePlatformLeft()
 void Player::MovePlatformRight()
 {
 	int x = platform.getX();
-	if (x + platformSpeed <= platform.maxX)
+	if (x + platform.getSpeed() <= platform.maxX)
 	{
-		platform.setX(x + platformSpeed);
+		platform.setX(x + platform.getSpeed());
 	}
 
 	if (!start)

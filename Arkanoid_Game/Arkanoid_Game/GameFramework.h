@@ -157,7 +157,6 @@ public:
 			"---The game should be started for the ability to be bought.\n" <<
 			"---BUFFS: Long platform, Ball size increase. They can be stacked.\n" <<
 			"---DEBUFFS: Short platform, Ball size decrease. They can be stacked.\n" <<
-			//"---Ball speed increases on tile hit, and decreases on tile break.\n" <<
 			"---Orange and red tiles take 2 hits to be destroyed. Golden tiles are unbreakable.\n" <<
 			"---Each tile has a different score value : Aqua & Blue - 10 points, Lime & Green - 20 points, Orange & Red - 40 points.\n" <<
 			"\n**CHEAT**\n---Press middle mouse to clear level.\n" <<

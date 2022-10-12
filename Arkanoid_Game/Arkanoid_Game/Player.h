@@ -9,7 +9,6 @@
 class Player
 {
 private:
-	int platformSpeed;
 	int levelNumber;
 	int sWidth;
 	int sHeight;
