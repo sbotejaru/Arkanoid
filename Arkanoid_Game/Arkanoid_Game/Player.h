@@ -21,6 +21,7 @@ private:
 	Ball ball;
 	Level* level;
 	bool start;
+	int speed;
 
 	bool up;
 	bool down;
@@ -69,5 +70,7 @@ public:
 	void StartBallMovement(bool _left);	
 
 	void SpawnBoughtAbility();	
+
+	void SetGameSpeed(int _speed);
 };
 

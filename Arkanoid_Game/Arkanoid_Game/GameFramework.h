@@ -8,6 +8,7 @@ private:
 	// preferred: 800x600, <960x720>, 1024x768, 1280x960
 	uint16_t m_width;
 	uint16_t m_height;
+	int speed = 1;
 
 	Player player;
 
@@ -33,6 +34,10 @@ public:
 		std::cout << "Input screen height: ";
 		std::cin >> m_height;
 
+		std::cout << "\nThis game was made with a high refresh rate monitor. The speed may vary at different refresh rates.";
+		std::cout << "\nIf the game is moving too slow, input a higher speed value (default = 1): ";
+		std::cin >> speed;
+
 		width = m_width;
 		height = m_height;
 
@@ -42,6 +47,7 @@ public:
 	virtual bool Init() {
 		std::cout << "Idle time after library initialization: " << getTickCount() << "ms\n\n";
 		player.LoadSprites();
+		player.SetGameSpeed(speed);
 		return true;
 	}
 

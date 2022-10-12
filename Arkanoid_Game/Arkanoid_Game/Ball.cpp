@@ -11,7 +11,7 @@ void Ball::Load()
 	getScreenSize(sWidth, sHeight);
 	size = sWidth / 30;	
 
-	minX = 5;
+	minX = speed * 2;
 	minY = 1;
 
 	sprite = createSprite(assetPath.at("ballSizeMax"));
@@ -94,6 +94,13 @@ int Ball::getSize() const
 int Ball::getSpeed() const
 {
 	return speed;
+}
+
+void Ball::setSpeed(int _speed)
+{
+	speed = _speed;
+	minX = _speed * 2;
+	//minY = _speed;
 }
 
 void Ball::resetPos()

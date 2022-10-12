@@ -59,6 +59,8 @@ public:
 
 	int getSpeed() const;
 
+	void setSpeed(int _speed);
+
 	void resetPos();
 
 	BallType getBallType() const;

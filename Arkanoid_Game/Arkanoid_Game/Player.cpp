@@ -177,13 +177,13 @@ void Player::MoveBall()
 
 bool Player::platformCollisionUp(int x, int y, bool& left, bool& right)
 {
-	if (y + ball.getSpeed() >= platform.maxY - ball.getSize() - 5)
+	if (y + ball.getSpeed() >= platform.maxY - ball.getSize() - speed * 2)
 	{
 		if (( // collision on the left edge			
 			x + ball.getSize() >= platform.getX() &&
 			x + ball.getSize() <= platform.getX() + platform.getW() / 4 &&
-			y - ball.getSpeed() + ball.getSize() >= platform.getY() - 5 &&
-			y - ball.getSpeed() + ball.getSize() <= platform.getY() + 5
+			y - ball.getSpeed() + ball.getSize() >= platform.getY() - speed * 2 &&
+			y - ball.getSpeed() + ball.getSize() <= platform.getY() + speed * 2
 			))
 		{
 			left = true;
@@ -194,8 +194,8 @@ bool Player::platformCollisionUp(int x, int y, bool& left, bool& right)
 		else if (( // collision on right edge
 			x >= platform.getX() + platform.getW() / 1.25 &&
 			x <= platform.getX() + platform.getW() &&
-			y - ball.getSpeed() + ball.getSize() >= platform.getY() - 5 &&
-			y - ball.getSpeed() + ball.getSize() <= platform.getY() + 5
+			y - ball.getSpeed() + ball.getSize() >= platform.getY() - speed * 2 &&
+			y - ball.getSpeed() + ball.getSize() <= platform.getY() + speed * 2
 			))
 		{
 			right = true;
@@ -206,13 +206,13 @@ bool Player::platformCollisionUp(int x, int y, bool& left, bool& right)
 		else if ((
 			x >= platform.getX() &&
 			x <= platform.getX() + platform.getW() &&
-			y - ball.getSpeed() + ball.getSize() >= platform.getY() - 5 &&
-			y - ball.getSpeed() + ball.getSize() <= platform.getY() + 5) ||
+			y - ball.getSpeed() + ball.getSize() >= platform.getY() - speed * 2 &&
+			y - ball.getSpeed() + ball.getSize() <= platform.getY() + speed * 2) ||
 			(
 				x + ball.getSize() >= platform.getX() &&
 				x + ball.getSize() <= platform.getX() + platform.getW() &&
-				y - ball.getSpeed() + ball.getSize() >= platform.getY() - 5 &&
-				y - ball.getSpeed() + ball.getSize() <= platform.getY() + 5
+				y - ball.getSpeed() + ball.getSize() >= platform.getY() - speed * 2 &&
+				y - ball.getSpeed() + ball.getSize() <= platform.getY() + speed * 2
 				))
 			return true;
 	}
@@ -222,19 +222,19 @@ bool Player::platformCollisionUp(int x, int y, bool& left, bool& right)
 
 bool Player::platformCollisionLeft(int x, int y)
 {
-	if (y + ball.getSpeed() >= platform.maxY - ball.getSize() - 5)
+	if (y + ball.getSpeed() >= platform.maxY - ball.getSize() - speed * 2)
 	{
 		if ((
 			// collision on the left side of the platform
 			y >= platform.getY() &&
 			y <= platform.getY() + platform.getH() &&
-			x + ball.getSpeed() + ball.getSize() >= platform.getX() - 5 &&
-			x + ball.getSpeed() + ball.getSize() <= platform.getX() + 5) ||
+			x + ball.getSpeed() + ball.getSize() >= platform.getX() - speed * 2 &&
+			x + ball.getSpeed() + ball.getSize() <= platform.getX() + speed * 2) ||
 			(
 				y + ball.getSize() >= platform.getY() &&
 				y + ball.getSize() <= platform.getY() + platform.getH() &&
-				x + ball.getSpeed() + ball.getSize() >= platform.getX() - 5 &&
-				x + ball.getSpeed() + ball.getSize() <= platform.getX() + 5
+				x + ball.getSpeed() + ball.getSize() >= platform.getX() - speed * 2 &&
+				x + ball.getSpeed() + ball.getSize() <= platform.getX() + speed * 2
 				))
 			return true;
 	}
@@ -244,18 +244,18 @@ bool Player::platformCollisionLeft(int x, int y)
 
 bool Player::platformCollisionRight(int x, int y)
 {
-	if (y + ball.getSpeed() >= platform.maxY - ball.getSize() - 5)
+	if (y + ball.getSpeed() >= platform.maxY - ball.getSize() - speed * 2)
 	{
 		if ((
 			y >= platform.getY() &&
 			y <= platform.getY() + platform.getH() &&
-			x - ball.getSpeed() >= platform.getX() + platform.getW() - 5 &&
-			x - ball.getSpeed() <= platform.getX() + platform.getW() + 5) ||
+			x - ball.getSpeed() >= platform.getX() + platform.getW() - speed * 2 &&
+			x - ball.getSpeed() <= platform.getX() + platform.getW() + speed * 2) ||
 			(
 				y + ball.getSize() >= platform.getY() &&
 				y + ball.getSize() <= platform.getY() + platform.getH() &&
-				x - ball.getSpeed() >= platform.getX() + platform.getW() - 5 &&
-				x - ball.getSpeed() <= platform.getX() + platform.getW() + 5
+				x - ball.getSpeed() >= platform.getX() + platform.getW() - speed * 2 &&
+				x - ball.getSpeed() <= platform.getX() + platform.getW() + speed * 2
 				))
 			return true;
 	}
@@ -267,7 +267,7 @@ bool Player::tileCollisionDown(int x, int y)
 {
 	auto tiles = level->getVisibleTiles();
 
-	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + 5)
+	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + speed * 2)
 	{
 		for (auto const& it : tiles)
 		{
@@ -279,13 +279,13 @@ bool Player::tileCollisionDown(int x, int y)
 			if ((
 				x >= tileX &&
 				x <= tileX + tileW &&
-				y + ball.getSpeed() >= tileY + tileH - 5 &&
-				y + ball.getSpeed() <= tileY + tileH + 5) ||
+				y + ball.getSpeed() >= tileY + tileH - speed * 2 &&
+				y + ball.getSpeed() <= tileY + tileH + speed * 2) ||
 				(
 					x + ball.getSize() >= tileX &&
 					x + ball.getSize() <= tileX + tileW &&
-					y + ball.getSpeed() >= tileY + tileH - 5 &&
-					y + ball.getSpeed() <= tileY + tileH + 5
+					y + ball.getSpeed() >= tileY + tileH - speed * 2 &&
+					y + ball.getSpeed() <= tileY + tileH + speed * 2
 					))
 			{
 				if (level->destroyTile(it.first))
@@ -317,7 +317,7 @@ bool Player::tileCollisionUp(int x, int y)
 {
 	auto tiles = level->getVisibleTiles();
 
-	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + 5)
+	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + speed * 2)
 	{
 		for (auto const& it : tiles)
 		{
@@ -329,13 +329,13 @@ bool Player::tileCollisionUp(int x, int y)
 			if ((
 				x >= tileX &&
 				x <= tileX + tileW &&
-				y - ball.getSpeed() + ball.getSize() >= tileY - 5 &&
-				y - ball.getSpeed() + ball.getSize() <= tileY + 5) ||
+				y - ball.getSpeed() + ball.getSize() >= tileY - speed * 2 &&
+				y - ball.getSpeed() + ball.getSize() <= tileY + speed * 2) ||
 				(
 					x + ball.getSize() >= tileX &&
 					x + ball.getSize() <= tileX + tileW &&
-					y - ball.getSpeed() + ball.getSize() >= tileY - 5 &&
-					y - ball.getSpeed() + ball.getSize() <= tileY + 5
+					y - ball.getSpeed() + ball.getSize() >= tileY - speed * 2 &&
+					y - ball.getSpeed() + ball.getSize() <= tileY + speed * 2
 					))
 			{
 				if (level->destroyTile(it.first))
@@ -367,7 +367,7 @@ bool Player::tileCollisionLeft(int x, int y)
 {
 	auto tiles = level->getVisibleTiles();
 
-	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + 5)
+	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + speed * 2)
 	{
 		for (auto const& it : tiles)
 		{
@@ -379,13 +379,13 @@ bool Player::tileCollisionLeft(int x, int y)
 			if ((
 				y >= tileY &&
 				y <= tileY + tileH &&
-				x + ball.getSpeed() + ball.getSize() >= tileX - 5 &&
-				x + ball.getSpeed() + ball.getSize() <= tileX + 5) ||
+				x + ball.getSpeed() + ball.getSize() >= tileX - speed * 2 &&
+				x + ball.getSpeed() + ball.getSize() <= tileX + speed * 2) ||
 				(
 					y + ball.getSize() >= tileY &&
 					y + ball.getSize() <= tileY + tileH &&
-					x + ball.getSpeed() + ball.getSize() >= tileX - 5 &&
-					x + ball.getSpeed() + ball.getSize() <= tileX + 5
+					x + ball.getSpeed() + ball.getSize() >= tileX - speed * 2 &&
+					x + ball.getSpeed() + ball.getSize() <= tileX + speed * 2
 					))
 			{
 				if (level->destroyTile(it.first))
@@ -417,7 +417,7 @@ bool Player::tileCollisionRight(int x, int y)
 {
 	auto tiles = level->getVisibleTiles();
 
-	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + 5)
+	if (y - ball.getSpeed() <= level->getMaxPlatformPos() + ball.getSize() + speed * 2)
 	{
 		for (auto const& it : tiles)
 		{
@@ -429,13 +429,13 @@ bool Player::tileCollisionRight(int x, int y)
 			if ((
 				y >= tileY &&
 				y <= tileY + tileH &&
-				x - ball.getSpeed() >= tileX + tileW - 5 &&
-				x - ball.getSpeed() <= tileX + tileW + 5) ||
+				x - ball.getSpeed() >= tileX + tileW - speed * 2 &&
+				x - ball.getSpeed() <= tileX + tileW + speed * 2) ||
 				(
 					y + ball.getSize() >= tileY &&
 					y + ball.getSize() <= tileY + tileH &&
-					x - ball.getSpeed() >= tileX + tileW - 5 &&
-					x - ball.getSpeed() <= tileX + tileW + 5
+					x - ball.getSpeed() >= tileX + tileW - speed * 2 &&
+					x - ball.getSpeed() <= tileX + tileW + speed * 2
 					))
 			{
 				if (level->destroyTile(it.first))
@@ -485,9 +485,12 @@ void Player::reset()
 
 void Player::StartBallMovement(bool _left)
 {
-	start = true;
-	left = _left;
-	right = !_left;
+	if (!start)
+	{
+		start = true;
+		left = _left;
+		right = !_left;
+	}
 }
 
 void Player::LevelChange()
@@ -617,6 +620,13 @@ void Player::SpawnBoughtAbility()
 			printScore();
 		}
 	}
+}
+
+void Player::SetGameSpeed(int _speed)
+{
+	ball.setSpeed(_speed);
+	platform.setSpeed(_speed);
+	speed = _speed;
 }
 
 void Player::spawnAbility(int x, int y)

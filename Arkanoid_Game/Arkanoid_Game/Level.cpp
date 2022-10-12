@@ -22,6 +22,8 @@ void Level::DrawSprites()
 void Level::checkVisibleTiles()
 {
 	maxY = 0;
+	uint16_t minY = screenWidth;
+	std::unordered_map<Tile*, std::pair<uint16_t, uint16_t>> _visibleTiles;
 
 	for (auto const& it : immuneTiles)
 	{
@@ -41,7 +43,32 @@ void Level::checkVisibleTiles()
 				it.first, it.second
 			));
 		}
+
+		if (y < minY)
+		{
+			minY = y;
+			_visibleTiles.clear();
+			_visibleTiles.insert(std::make_pair(
+				it.first, it.second
+			));
+		}
+		else if (y == minY)
+		{
+			_visibleTiles.insert(std::make_pair(
+				it.first, it.second
+			));
+
+		}
 	}
+
+	for (auto const& it : _visibleTiles)
+	{
+		visibleTiles.insert(std::make_pair(
+			it.first, it.second
+		));
+	}
+
+	_visibleTiles.clear();
 
 	for (auto const& it : visibleTiles)
 	{
@@ -106,7 +133,7 @@ bool Level::destroyTile(Tile* tile)
 		visibleTiles.erase(tile);
 		destroySprite(tile->getSprite());
 		VerifyGameState();
-		
+
 		return true;
 	}
 }
