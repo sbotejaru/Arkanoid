@@ -1,5 +1,5 @@
 # Arkanoid
-Arkanoid game made in c++ using SDL2, libjpeg and zlib all brought together in a framework provided by Dragon's Lake
+Arkanoid game made in C++ using SDL2, libjpeg and zlib all brought together in a framework provided by Dragon's Lake
 
 Screenshots:
 
