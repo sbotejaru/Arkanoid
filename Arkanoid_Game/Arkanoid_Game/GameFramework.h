@@ -34,7 +34,7 @@ public:
 		std::cout << "Input screen height: ";
 		std::cin >> m_height;
 
-		std::cout << "\nThis game was made with a high refresh rate monitor. The speed may vary at different refresh rates.";
+		std::cout << "\nThis game was made with uncapped FPS. If you have capped FPS the game might have slower speeds.";
 		std::cout << "\nIf the game is moving too slow, input a higher speed value (default = 1): ";
 		std::cin >> speed;
 
